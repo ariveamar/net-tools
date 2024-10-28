@@ -1,5 +1,4 @@
 FROM debian:bookworm-20241016-slim
-USER admin
 LABEL org.opencontainers.image.title="RTSP Network Tools"
 LABEL org.opencontainers.image.authors="RTSP <docker@rtsp.us>"
 LABEL org.opencontainers.image.source="https://github.com/rtsp/docker-net-tools"
@@ -55,6 +54,7 @@ RUN set -x && apt-get update && apt-get --yes --no-install-recommends install \
     redis-tools \
     && rm -rvf /var/lib/apt/lists/*
 
+USER root
 COPY files/ /root/
 
 CMD ["/bin/sleep", "infinity"]
